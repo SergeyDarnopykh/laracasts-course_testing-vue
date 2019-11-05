@@ -1,6 +1,6 @@
 import { mount } from 'vue-test-utils'
 import { describe, it, beforeEach } from 'mocha';
-import Counter from '../src/components/Counter.js'
+import Counter from '../src/components/Counter.vue'
 import expect from 'expect'
 
 describe('Counter', () => {
