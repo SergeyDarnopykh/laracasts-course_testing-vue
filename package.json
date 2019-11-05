@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*spec.js"
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*spec.js",
+    "watch": "mocha-webpack --watch --webpack-config webpack.config.js --require test/setup.js test/*spec.js"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +17,8 @@
     "expect": "^24.9.0",
     "jsdom": "^15.2.1",
     "jsdom-global": "^3.0.2",
-    "mocha": "^6.2.2",
-    "mocha-webpack": "^1.1.0",
+    "mocha": "^4.0.1",
+    "mocha-webpack": "^0.7.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",

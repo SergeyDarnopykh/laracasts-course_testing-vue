@@ -1,7 +1,8 @@
 <template>
     <div>
         <span class="count">{{ count }}</span>
-        <button @click="count++"></button>
+        <button class="increment" @click="count++"></button>
+        <button v-show="count > 0" class="decrement" @click="decreaseCount"></button>
     </div>
 </template>
 
@@ -11,6 +12,12 @@
             return {
                 count: 0
             }
+        },
+
+        methods: {
+            decreaseCount() {
+                this.count > 0 && this.count--
+            },
         }
     }
 </script>
