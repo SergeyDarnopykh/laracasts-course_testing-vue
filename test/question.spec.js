@@ -1,12 +1,15 @@
 import { mount } from 'vue-test-utils'
-import { describe, it, beforeEach } from 'mocha';
+import { describe, it, beforeEach, afterEach } from 'mocha';
 import Question from '../src/components/Question.vue'
 import expect from 'expect'
+import moxios from 'moxios'
 
 describe('Question', () => {
     let wrapper
 
     beforeEach(() => {
+        moxios.install()
+
         wrapper = mount(Question, {
             propsData: {
                 dataQuestion: {
@@ -15,6 +18,10 @@ describe('Question', () => {
                 }
             }
         })
+    })
+
+    afterEach(() => {
+        moxios.uninstall()
     })
 
     it ('presents the title and the body', () => {
@@ -37,16 +44,30 @@ describe('Question', () => {
         expect(wrapper.contains('#edit')).toBe(false)
     })
 
-    it ('updates the question after being edited', () => {
+    it.only ('updates the question after being edited', (done) => {
         click('#edit')
 
         type('input[name=title]', 'Changed title')
         type('textarea[name=body]', 'Changed body')
 
+        moxios.stubRequest(/questions\/.+/, {
+            status: 200,
+            response: {
+                title: 'Changed title',
+                body: 'Changed body'
+            }
+        })
+
         click('#update')
 
         see('Changed title')
         see('Changed body')
+
+        moxios.wait(() => {
+            see('Your question has been updated')
+
+            done()
+        })
     })
 
     it ('can cancel out of edit mode', () => {
