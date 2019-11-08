@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*spec.js",
-    "watch": "mocha-webpack --watch --webpack-config webpack.config.js --require test/setup.js test/question.spec.js"
+    "watch": "mocha-webpack --watch --webpack-config webpack.config.js --require test/setup.js test/countdown.spec.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,9 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^4.0.1",
     "mocha-webpack": "^0.7.0",
+    "moment": "^2.24.0",
     "moxios": "^0.4.0",
+    "sinon": "^7.5.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
