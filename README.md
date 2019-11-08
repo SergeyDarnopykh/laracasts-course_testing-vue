@@ -5,58 +5,58 @@
 ### Test structure
 ```js
 import { mount } from 'vue-test-utils'
-    import { describe, it, beforeEach, afterEach } from 'mocha';
-    import Component from '../src/components/Component.vue'
-    import expect from 'expect'
+import { describe, it, beforeEach, afterEach } from 'mocha';
+import Component from '../src/components/Component.vue'
+import expect from 'expect'
     
-    describe('Component name', () => {
-        let wrapper, vm;
-    
-    		// Called before each test
-        beforeEach(() => {
-            wrapper = mount(Countdown)
-            vm = wrapper.vm
-        })
-    
-    		// Called after each test
-        afterEach(() => {
-            // do smth
-        })
-    
-        it ('does something', () => {
-            // code that tests a feature
-        })
+describe('Component name', () => {
+    let wrapper, vm;
+
+        // Called before each test
+    beforeEach(() => {
+        wrapper = mount(Countdown)
+        vm = wrapper.vm
     })
+
+        // Called after each test
+    afterEach(() => {
+        // do smth
+    })
+
+    it ('does something', () => {
+        // code that tests a feature
+    })
+})
 ```
     
 
 ### Common helpers (can be put in setup.js)
 ```js
-    // Check if event is emitted
-    let expectEvent = (event) => {
-        expect(wrapper.emitted()[event]).toBeTruthy()
-    }
-    
-    // Check if given text is visible inside the given selector 
-    // (or just inside the component)
-    let see = (text, selector) => {
-        let wrap = selector ? wrapper.find(selector) : wrapper;
-    
-        expect(wrap.html()).toContain(text)
-    }
-    
-    // Simulate user input
-    let type = (text, selector) => {
-        const node = wrapper.find(selector)
-    
-        node.element.value = text
-        node.trigger('input')
-    }
-    
-    // Simulate click
-    let click = selector => {
-        wrapper.find(selector).trigger('click')
-    }
+// Check if event is emitted
+let expectEvent = (event) => {
+    expect(wrapper.emitted()[event]).toBeTruthy()
+}
+
+// Check if given text is visible inside the given selector 
+// (or just inside the component)
+let see = (text, selector) => {
+    let wrap = selector ? wrapper.find(selector) : wrapper;
+
+    expect(wrap.html()).toContain(text)
+}
+
+// Simulate user input
+let type = (text, selector) => {
+    const node = wrapper.find(selector)
+
+    node.element.value = text
+    node.trigger('input')
+}
+
+// Simulate click
+let click = selector => {
+    wrapper.find(selector).trigger('click')
+}
 ```
     
 
